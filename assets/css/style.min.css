@@ -1,0 +1,9 @@
+
+/* Trabalha no Chrome/Edge/Safari */
+::-webkit-scrollbar {width: 5px;background-color: rgba(0, 0, 0, .1);}
+::-webkit-scrollbar-thumb {width: 5px;background: linear-gradient(rgba(0, 0, 0, 0.027), rgba(71, 71, 70, 0.938));border-radius: 10px;}
+
+html, body { background-color: #dcdcdc; }
+.img-circle { border-radius: 70% !important; }
+.h-15 {height: 15%!important;}
+.w-15 {width: 15%!important;}
