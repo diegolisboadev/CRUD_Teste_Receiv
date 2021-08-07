@@ -1,3 +1,8 @@
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT']."/Crud/Crud.class.php";
+    $crud = new Crud();
+    print($crud->adicionarDevedor());
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
