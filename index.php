@@ -1,7 +1,8 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT']."/Crud/Crud.class.php";
-    $crud = new Crud();
-    print($crud->adicionarDevedor());
+    session_start();
+    
+    var_dump($_SESSION['msg']);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,28 +32,47 @@
             <h5 class="card-header"><i class="fa fa-users fa-1x"></i>&nbsp;Cadastro Devedores/Dívidas</h5>
             <div class="card-body">
                     
-                    <form action="" method="" accept-charset="utf-8">
+                    <form action="/adicionar.php" method="POST" accept-charset="utf-8">
                         <div class="row mb-3">
-                            <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4 col-sm-4 mt-3">
                                 <label for="nome">Devedor</label>
-                                <input id="nome" type="text" class="form-control" name="nome" placeholder="Ex. João Nascimento">
+                                <input id="nome" type="text" class="form-control" name="nome" placeholder="Ex. João Nascimento" required>
                             </div>
-                            <div class="col-md-4 col-sm-4">
+
+                            <div class="col-md-4 col-sm-4 mt-3">
                                 <label for="cpf_cnpj">CPF/CNPJ</label>
-                                <input id="cpf_cnpj" type="text" class="form-control" name="cpf_cnpj" placeholder="">
+                                <input id="cpf_cnpj" type="text" class="form-control" name="cpf_cnpj" placeholder="" required>
                             </div>
-                            <div class="col-md-4 col-sm-4">
+
+                            <div class="col-md-4 col-sm-4 mt-3">
                                 <label for="dt_nascimento">Data Nascimento</label>
-                                <input id="dt_nascimento" type="text" class="form-control" name="dt_nascimento" placeholder="00/00/0000">
+                                <input id="dt_nascimento" type="text" class="form-control" name="dt_nascimento" placeholder="00/00/0000" required>
                             </div>
-                            <div class="col-md-4 col-sm-4">
+
+                            <div class="col-md-4 col-sm-4 mt-3">
                                 <label for="endereco">Endereço</label>
                                 <input id="endereco" type="text" class="form-control" name="endereco" placeholder="Ex. Rua Zero">
                             </div>
+                            
+                            <div class="col-md-4 col-sm-4 mt-3">
+                                <label for="descricao">Descrição</label>
+                                <input id="descricao" type="text" class="form-control" name="descricao" placeholder="Ex. Bola de Futebol">
+                            </div>
+
+                            <div class="col-md-4 col-sm-4 mt-3">
+                                <label for="valor">Valor R$</label>
+                                <input id="valor" type="text" class="form-control" name="valor" placeholder="0,00">
+                            </div>
+
+                            <div class="col-md-4 col-sm-4 mt-3">
+                                <label for="dt_vencimento">Data Vencimento</label>
+                                <input id="dt_vencimento" type="text" class="form-control" name="dt_vencimento" placeholder="00/00/0000">
+                            </div>
+
                         </div>
 
-                        <div>
-                            <button href="#" class="btn btn-primary justify-content-right">Salvar</button>
+                        <div class="text-right">
+                            <button href="#" class="btn btn-secondary btn-lg pull-right">Salvar</button>
                         </div>
 
                     </form>
@@ -100,6 +120,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/imask"></script>
+    <script src="https://unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
     <script src="assets/js/style.min.js"></script>
 </body>
 </html>
