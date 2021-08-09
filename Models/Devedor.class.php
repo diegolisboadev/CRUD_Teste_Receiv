@@ -27,7 +27,6 @@
             return $this->endereco;
         }
 
-
         public function getDescricao() {
             return $this->descricao;
         }

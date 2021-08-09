@@ -17,6 +17,7 @@
          * @param Model $devedor
          * 
          * @return bool 
+         * @return PDOException $e
          */
         public function insereDados(Devedor $devedor) {
             try {
@@ -41,6 +42,46 @@
                 return $e->getMessage();
             }
         }
+
+        /**
+         * Insere os Dados do Devedor Cliente
+         * 
+         * @param Model $devedor
+         * @param int $id
+         * 
+         * @return bool 
+         * @return PDOException $e
+         */
+        public function editarDados(Devedor $devedor, int $id) {
+            try {
+
+                print_r($devedor);
+
+                $dev = $this->conn->prepare('
+                        UPDATE devedores 
+                        SET nome=?, cpf_cnpj=?, dt_nascimento=?, endereco=?, descricao=?, valor=?,
+                        dt_vencimento=?, updated_at=?
+                        WHERE id = ?');
+
+                print((new \DateTime())->format('Y-m-d H:i:s'));
+
+                $dev->bindParam(1, $devedor->getNome());
+                $dev->bindParam(2, $devedor->getCpfCnpj());
+                $dev->bindParam(3, $devedor->getDataNascimento());
+                $dev->bindParam(4, $devedor->getEndereco());
+                $dev->bindParam(5, $devedor->getDescricao());
+                $dev->bindParam(6, $devedor->getValor());
+                $dev->bindParam(7, $devedor->getDataVencimento());
+                $dev->bindParam(8, (new \DateTime())->format('Y-m-d H:i:s'));
+                $dev->bindParam(9, $id);
+       
+                return $dev->execute() != true ? false : true;
+
+            } catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
+
 
         /**
          * Lista os dados do ClienteDevedor

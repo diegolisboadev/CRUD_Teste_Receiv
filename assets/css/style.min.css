@@ -9,3 +9,4 @@ html, body { background-color: #dcdcdc; }
 .w-15 {width: 15%!important;}
 
 .capitalized { text-transform: capitalize; }
+.font-bold { font-weight: 700; }

@@ -7,6 +7,7 @@
     if((string) in_array($_SERVER['REQUEST_METHOD'], ['POST'])) {
 
         $dados = filter_input_array(INPUT_POST, [
+            "idc" => FILTER_SANITIZE_FULL_SPECIAL_CHARS | FILTER_VALIDATE_INT |FILTER_SANITIZE_NUMBER_INT,
             "nome" => FILTER_SANITIZE_STRING,
             "cpf_cnpj" => FILTER_SANITIZE_STRING | FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             "dt_nascimento" => FILTER_SANITIZE_STRING | FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -28,15 +29,14 @@
 
         // Instância CrudDao // TODO MENSAGENS DE RETORNO (REDIRECT)
         $crud = new CrudDao();
-        if($crud->insereDados($devedor)) {
-            $_SESSION['msg'] = 'Devedor(a) Salvo(a) com Sucesso!';
+        if($crud->editarDados($devedor, $dados['idc'])) {
+            $_SESSION['msg'] = 'Devedor(a) Alterado(a) com Sucesso!';
             //header("Location: index.php");
         } else {
-            $_SESSION['msg'] = 'Devedor(a) Salvo(a) com Sucesso!';
+            $_SESSION['msg'] = 'Devedor(a) Alterado(a) com Sucesso!';
             //header("Location: index.php");
         }
        
-        
     } else {
-        print('Erro ao Salvar o Cliente/Devedor!');
+        print('Erro ao Editar o Cliente/Devedor!');
     }
