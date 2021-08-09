@@ -85,28 +85,19 @@
             <h5 class="card-header"><i class="fa fa-list fa-1x"></i>&nbsp;Listagem Devedores/Dívidas</h5>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped table-bordered">
+                    <table class="table table-hover table-striped table-bordered" id="table_devedores">
                         <thead class="table-dark text-center">
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Dívida</th>
-                            <th>Data Criação</th>
-                            <th>Ações</th>
-                        </thead>
-                        <tbody>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>XXXXX</td>
-                                <td>XXXXX</td>
-                                <td>XX/XX/XXXX</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-secondary" title="Info"><i class="fa fa-info fa-1x"></i></button>
-                                    &emsp;
-                                    <button type="button" class="btn btn-outline-info" title="Editar"><i class="fa fa-edit fa-1x"></i></button>
-                                    &emsp;
-                                    <button type="button" class="btn btn-outline-danger" title="Excluir"><i class="fa fa-trash fa-1x"></i></button>
-                                </td>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Dívida</th>
+                                <th>Valor R$</th>
+                                <th>Data Criação</th>
+                                <th>Data Vencimento</th>
+                                <th>Ações</th>
                             </tr>
+                        </thead>
+                        <tbody id="tbody">
                         </tbody>
                     </table>
                 </div>
@@ -121,6 +112,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/imask"></script>
     <script src="https://unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="assets/js/util.min.js"></script>
     <script src="assets/js/style.min.js"></script>
 </body>
 </html>

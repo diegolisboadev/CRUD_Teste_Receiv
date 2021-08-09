@@ -40,10 +40,6 @@
             return $this->dataVencimento;
         }
 
-        public function getDevedorId() {
-            return $this->devedorId;
-        }
-
         public function setNome($nome) {
             return $this->nome = $nome;
         }
