@@ -21,7 +21,7 @@
          */
         public function insereDados(Devedor $devedor) {
             try {
-
+                $datetime = (new \DateTime())->format('Y-m-d H:i:s');
                 $dev = $this->conn->prepare('INSERT INTO devedores 
                         (nome, cpf_cnpj, dt_nascimento, endereco,
                         descricao, valor, dt_vencimento, created_at, updated_at)
@@ -33,8 +33,8 @@
                 $dev->bindParam(5, $devedor->getDescricao());
                 $dev->bindParam(6, $devedor->getValor());
                 $dev->bindParam(7, $devedor->getDataVencimento());
-                $dev->bindParam(8, (new \DateTime())->format('Y-m-d H:i:s'));
-                $dev->bindParam(9, (new \DateTime())->format('Y-m-d H:i:s'));
+                $dev->bindParam(8, $datetime);
+                $dev->bindParam(9, $datetime);
        
                 return $dev->execute() != true ? false : true;
 
@@ -55,15 +55,13 @@
         public function editarDados(Devedor $devedor, int $id) {
             try {
 
-                print_r($devedor);
+                $datetime = (new \DateTime())->format('Y-m-d H:i:s');
 
                 $dev = $this->conn->prepare('
                         UPDATE devedores 
                         SET nome=?, cpf_cnpj=?, dt_nascimento=?, endereco=?, descricao=?, valor=?,
                         dt_vencimento=?, updated_at=?
                         WHERE id = ?');
-
-                print((new \DateTime())->format('Y-m-d H:i:s'));
 
                 $dev->bindParam(1, $devedor->getNome());
                 $dev->bindParam(2, $devedor->getCpfCnpj());
@@ -72,7 +70,7 @@
                 $dev->bindParam(5, $devedor->getDescricao());
                 $dev->bindParam(6, $devedor->getValor());
                 $dev->bindParam(7, $devedor->getDataVencimento());
-                $dev->bindParam(8, (new \DateTime())->format('Y-m-d H:i:s'));
+                $dev->bindParam(8, $datetime);
                 $dev->bindParam(9, $id);
        
                 return $dev->execute() != true ? false : true;
