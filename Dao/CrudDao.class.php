@@ -153,4 +153,22 @@
                 return json_encode(['info' => false, 'resultado' => $e->getMessage()]);
             }
         }
+
+        /**
+         * 
+         */
+        public function ajaxResponseDashPessoasGastos() {
+            try {
+                $stmt = $this->conn->prepare("SELECT nome, valor FROM devedores");
+                
+                if($stmt->execute()) {
+                    return json_encode(['info' => true, 'resultado' => $stmt->fetchAll(PDO::FETCH_ASSOC)], true);
+                } else {
+                    return json_encode(['info' => false, 'resultado' => "Erro na Consulta! Tente Novamente!"], true);
+                }
+
+            } catch(PDOException $e) {
+                return json_encode(['info' => false, 'resultado' => "Erro Interno ".$e->getMessage()]);
+            }
+        }
     }

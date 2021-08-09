@@ -85,7 +85,14 @@
 
         <!-- Listagem dos Devedores -->
         <div class="card mt-5">
-            <h5 class="card-header"><i class="fa fa-list fa-1x"></i>&nbsp;Listagem Devedores/Dívidas</h5>
+            <h5 class="card-header">
+            <i class="fa fa-list fa-1x"></i>&nbsp;Listagem Devedores/Dívidas
+            <div class="pull-right">
+                <a href="/dashboard.php" type="button" type="Visualizar" class="btn btn-outline-primary">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Dash Gastos Credores
+                </a>
+            </div>
+        </h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover table-striped table-bordered" id="table_devedores">
