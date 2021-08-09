@@ -30,12 +30,15 @@
         // Instância CrudDao // TODO MENSAGENS DE RETORNO (REDIRECT)
         $crud = new CrudDao();
         if($crud->editarDados($devedor, $dados['idc'])) {
-            $_SESSION['msg'] = 'Devedor(a) Alterado(a) com Sucesso!';
-            //header("Location: index.php");
+            $_SESSION['resultado'] = '<div class="alert alert-success mx-auto alert-msg font-bold">Devedor(a) Alterado(a) com Sucesso!</div>';
+            header("Location: index.php");
         } else {
-            $_SESSION['msg'] = 'Devedor(a) Alterado(a) com Sucesso!';
-            //header("Location: index.php");
+            $_SESSION['resultado'] = '<div class="alert alert-danger mx-auto alert-msg font-bold">Erro ao Alterar Devedor(a)!</div>';
+            header("Location: index.php");
         }
+
+        exit();
+       
        
     } else {
         print('Erro ao Editar o Cliente/Devedor!');

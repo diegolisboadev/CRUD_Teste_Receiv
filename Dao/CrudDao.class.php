@@ -135,9 +135,22 @@
         }
 
         /**
+         * Excluir um cliente/devedor
          * 
+         * @param int $id
+         * @param string $table
+         * 
+         * @return string json_encode()
          */
-        public function excluiDado(int $id) {
+        public function excluiDados(int $id, string $table) {
+            try {
 
+                $stmt = $this->conn->prepare("DELETE FROM {$table} WHERE id = {$id}");
+
+                return $stmt->execute() != true ? false : true;
+
+            } catch(PDOException $e) {
+                return json_encode(['info' => false, 'resultado' => $e->getMessage()]);
+            }
         }
     }

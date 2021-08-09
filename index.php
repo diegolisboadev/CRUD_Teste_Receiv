@@ -1,9 +1,4 @@
-<?php
-    session_start();
-    
-    var_dump($_SESSION['msg']);
-
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,6 +18,14 @@
             CRUD Devedores e Dívidas
         </h2>
         <hr>
+
+        <?php 
+            if (isset($_SESSION['resultado'])) {
+                print($_SESSION['resultado']);
+                unset($_SESSION['resultado']);
+            } 
+        ?>
+         
     </div>
 
     <div class="container mt-5 mb-5">
@@ -108,6 +111,7 @@
 
     <?php include_once "./modalInfo.php"; ?>
     <?php include_once "./modalEditar.php"; ?>
+    <?php include_once "./modalExcluir.php"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>

@@ -10,3 +10,4 @@ html, body { background-color: #dcdcdc; }
 
 .capitalized { text-transform: capitalize; }
 .font-bold { font-weight: 700; }
+.alert-msg { width: 400px !important; }

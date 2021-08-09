@@ -26,15 +26,17 @@
         $devedor->setDataVencimento($dados['dt_vencimento']);
         $devedor->setValor($dados['valor']);
 
-        // Instância CrudDao // TODO MENSAGENS DE RETORNO (REDIRECT)
+        // Instância CrudDao
         $crud = new CrudDao();
         if($crud->insereDados($devedor)) {
-            $_SESSION['msg'] = 'Devedor(a) Salvo(a) com Sucesso!';
-            //header("Location: index.php");
+            $_SESSION['resultado'] = '<div class="alert alert-success mx-auto alert-msg font-bold">Devedor(a) Salvo(a) com Sucesso!</div>';
+            header("Location: index.php");
         } else {
-            $_SESSION['msg'] = 'Devedor(a) Salvo(a) com Sucesso!';
-            //header("Location: index.php");
+            $_SESSION['resultado'] = '<div class="alert alert-danger mx-auto alert-msg font-bold">Erro ao Salvar Devedor(a)!</div>';
+            header("Location: index.php");
         }
+
+        exit();
        
         
     } else {
