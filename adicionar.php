@@ -38,6 +38,6 @@
        
         
     } else {
-        print('erro');
+        print('Erro ao Salvar o Cliente/Devedor!');
     }
 ?>

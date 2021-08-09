@@ -12,7 +12,11 @@
         }
 
         /**
+         * Insere os Dados do Devedor Cliente
          * 
+         * @param Model $devedor
+         * 
+         * @return bool 
          */
         public function insereDados(Devedor $devedor) {
             try {
@@ -39,7 +43,12 @@
         }
 
         /**
+         * Lista os dados do ClienteDevedor
          * 
+         * @param array $campos
+         * @param string $table
+         * 
+         * @return string json_encode()
          */
         public function listaDados(array $campos = ['*'], string $table) {
             try {
@@ -53,33 +62,31 @@
                     return json_encode(['info' => false, 'resultado' => "Erro na Consulta! Tente Novamente!"], true);
                 }
 
-                /*while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    var_dump($row);
-                }*/
-
             } catch(PDOException $e) {
                 return json_encode(['info' => false, 'resultado' => "Erro Interno ".$e->getMessage()]);
             }
         }
 
         /**
+         * Retorna o dado de um cliente devedor
          * 
+         * @param int $id
+         * @param array $campos
+         * @param string $table
+         * 
+         * @return string json_encode()
          */
-        public function listaDadosId(int $id, array $campos = ['*'], string $table) {
+        public function listaDadosId(int $id, string $table, array $campos = ['*']) {
             try {
 
                 $campos = implode(',', $campos);
-                $stmt = $this->conn->prepare("SELECT {$campos} FROM {$table} WHERE $id = {$id}");
+                $stmt = $this->conn->prepare("SELECT {$campos} FROM {$table} WHERE id = {$id}");
 
                 if($stmt->execute()) {
                     return json_encode(['info' => true, 'resultado' => $stmt->fetch(PDO::FETCH_ASSOC)], true);
                 } else {
                     return json_encode(['info' => false, 'resultado' => "Erro na Consulta! Tente Novamente!"], true);
                 }
-
-                /*while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    var_dump($row);
-                }*/
 
             } catch(PDOException $e) {
                 return json_encode(['info' => false, 'resultado' => $e->getMessage()]);
